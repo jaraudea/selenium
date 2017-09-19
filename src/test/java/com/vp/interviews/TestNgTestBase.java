@@ -35,8 +35,13 @@ public class TestNgTestBase {
 
   @BeforeMethod
   public void initWebDriver() {
-    System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_linux64/chromedriver");
-    System.setProperty("webdriver.gecko.driver", "drivers/geckodriver-v0.17.0-linux64/geckodriver");
+//    System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_linux64/chromedriver");
+//    System.setProperty("webdriver.gecko.driver", "drivers/geckodriver-v0.17.0-linux64/geckodriver");
+    System.setProperty("webdriver.chrome.driver", "drivers/mac_chromedriver");
+    System.setProperty("webdriver.gecko.driver", "drivers/mac_geckodriver");
+//    System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+//    System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
+
 
     driver = WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities);
   }
