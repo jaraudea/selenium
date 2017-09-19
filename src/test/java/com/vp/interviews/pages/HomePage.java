@@ -11,10 +11,6 @@ import org.openqa.selenium.support.How;
  */
 public class HomePage extends Page {
 
-  @FindBy(how = How.TAG_NAME, using = "h1")
-  @CacheLookup
-  public WebElement header;
-
   public HomePage(WebDriver webDriver) {
     super(webDriver);
   }
