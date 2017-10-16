@@ -22,6 +22,7 @@ public class TestNgTestBase {
   protected static Capabilities capabilities;
 
   protected WebDriver driver;
+  protected DriverLoader driverLoader;
 
   @BeforeSuite
   public void initTestSuite() throws IOException {
@@ -35,14 +36,20 @@ public class TestNgTestBase {
 
   @BeforeMethod
   public void initWebDriver() {
-//    System.setProperty("webdriver.chrome.driver", "drivers/chromedriver_linux64/chromedriver");
-//    System.setProperty("webdriver.gecko.driver", "drivers/geckodriver-v0.17.0-linux64/geckodriver");
-    System.setProperty("webdriver.chrome.driver", "drivers/mac_chromedriver");
-    System.setProperty("webdriver.gecko.driver", "drivers/mac_geckodriver");
-//    System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-//    System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
+    switch (System.getProperty("os.name")) {
+      case "Linux":
+        driverLoader = new LinuxDriverLoader();
+        break;
+      case "Windows":
+        driverLoader = new WindowsDriverLoader();
+        break;
+      case "Mac":
+        driverLoader = new MacDriverLoader();
+        break;
+    }
 
-
+    driverLoader.configureFirefoxDriver();
+    driverLoader.configureChromeDriver();
     driver = WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities);
   }
 

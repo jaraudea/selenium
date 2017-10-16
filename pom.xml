@@ -101,9 +101,6 @@
       <properties>
         <capabilities>/chrome.capabilities</capabilities>
       </properties>
-        <activation>
-            <activeByDefault>true</activeByDefault>
-        </activation>
     </profile>
     <profile>
       <id>ie</id>
@@ -141,9 +138,6 @@
       <properties>
         <site.url>http://www.avianca.com</site.url>
       </properties>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
     </profile>
     <profile>
       <id>devhost</id>
@@ -169,15 +163,27 @@
       <properties>
         <grid.url></grid.url>
       </properties>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
     </profile>
     <profile>
       <id>grid</id>
       <properties>
         <grid.url>http://localhost:4444/wd/hub/</grid.url>
       </properties>
+    </profile>
+    <profile>
+      <id>default</id>
+      <properties>
+        <capabilities>/chrome.capabilities</capabilities>
+        <site.url>http://www.avianca.com</site.url>
+        <grid.url></grid.url>
+      </properties>
+      <activation>
+        <!--Following property set as default this profile on IntelliJ -->
+        <property>
+          <name>idea.maven.embedder.version</name>
+        </property>
+        <activeByDefault>true</activeByDefault>
+      </activation>
     </profile>
   </profiles>
 </project>
